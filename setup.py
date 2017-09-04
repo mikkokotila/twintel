@@ -59,7 +59,7 @@ def check_dependencies():
     except ImportError:
         install_requires.append('twython')
 
-    install_requires.append('python-tk')
+    # install_requires.append('python-tk')
 
     return install_requires
 
