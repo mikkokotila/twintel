@@ -82,7 +82,7 @@ if __name__ == "__main__":
           install_requires=install_requires,
           packages=['twint',
                     'twint._methods',
-                    'twint._resources,
+                    'twint._resources',
                     'twint._processing'],
           classifiers=[
                      'Intended Audience :: Science/Research',
