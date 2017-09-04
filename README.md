@@ -2,7 +2,7 @@
 
 ### Installation 
 
-    pip install git+
+    pip install git+https://github.com/mikkokotila/twint.git
 
 ### Use Examples
 
