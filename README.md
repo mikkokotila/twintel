@@ -33,7 +33,7 @@ compound | NLTK
 neu | NLTK 
 neg | NLTK 
 pos | NLTK 
-days_since_creation 
+days_since_creation | Twitter
 user_tweets | Twitter 
 user_favourites | Twitter | 
 user_followers | Twitter
