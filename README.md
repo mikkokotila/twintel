@@ -34,7 +34,7 @@
     
 #### Ingest a JSON file resulting from stream()
     
-    flatfile()
+    flatfile('some_tweets.json')
 
 ### Signal Taxonomy 
 
