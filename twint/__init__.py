@@ -1,7 +1,7 @@
-from ._methods.stream import stream
-from ._methods.flatfile import flatfile
-from ._methods.search import search
-from ._methods.timeline import timeline
+from twint._methods.stream import stream
+from twint._methods.flatfile import flatfile
+from twint._methods.search import search
+from twint._methods.timeline import timeline
 
 __version__ = "1.2"
 
