@@ -1,5 +1,19 @@
 # twint | signals intelligence taxonomy from Twitter API 
 
+**Twint** is a Python package that provides a very high level abstraction layer to Twitter API and provides the preprocessed results in a pandas dataframe. The system have been built with several key concerns in mind. 
+
+### Key Features
+
+- availability of key scores (influence, reach, etc)
+- applicability of the data for neural networks
+- identification of spam and other bots
+- singleline commands for all four important methods:
+   - streaming API for both keywords and users
+   - REST API for for keywords
+   - REST API for user timelines
+   - Flatfile ingestion from JSON (from Twitter API)
+ - all methods return identical dataframe
+
 ### Installation 
 
     pip install git+https://github.com/mikkokotila/twint.git
