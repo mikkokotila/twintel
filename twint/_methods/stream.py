@@ -59,10 +59,10 @@ def stream(items,kind="keywords",filename=''):
     if kind == 'users':
         for userid in items:
             if str(userid).isdigit() != True:
-                print "These are not all user_id...the user id does not contain alphabets."
+                print("These are not all user_id...the user id does not contain alphabets.")
                 break
             if (len(items)) > 100:
-                print "It's better to not try with more than 100 users per single stream."
+                print("It's better to not try with more than 100 users per single stream.")
                 break
             else:
                 twitter_stream.filter(follow=items)
