@@ -55,6 +55,7 @@ def search(query, max_tweets=200, language='en'):
             break
 
     df = data_frame(searched_tweets)
+    df.text = df.text.str.decode('utf-8')
     df.meta_keyword = str(query)
 
     return df

@@ -26,21 +26,21 @@ def data_frame(data):
 
     try:
         df2 = pd.DataFrame([[tweet.user.screen_name, pd.to_datetime(tweet.user.created_at),
-                        tweet.user.default_profile, tweet.user.default_profile_image,
-                        tweet.user.description, tweet.user.location,
-                        tweet.user.time_zone] for tweet in data],
-                        columns=('handle','created_at','default_profile',
-                                 'egg_account','description','location','timezone'))
+                             tweet.user.default_profile, tweet.user.default_profile_image,
+                             tweet.user.description, tweet.user.location,
+                             tweet.user.time_zone] for tweet in data],
+                             columns=('handle', 'created_at', 'default_profile',
+                                      'egg_account', 'description', 'location', 'timezone'))
 
     except AttributeError:
         df2 = pd.DataFrame({
-                        'handle' : data['user.screen_name'],
-                        'created_at' : pd.to_datetime(data['user.created_at']),
-                        'default_profile' : data['user.default_profile'],
-                        'egg_account' : data['user.default_profile_image'],
-                        'description' : data['user.description'],
-                        'location' : data['user.location'],
-                        'timezone' : data['user.time_zone']})
+                        'handle': data['user.screen_name'],
+                        'created_at': pd.to_datetime(data['user.created_at']),
+                        'default_profile': data['user.default_profile'],
+                        'egg_account': data['user.default_profile_image'],
+                        'description': data['user.description'],
+                        'location': data['user.location'],
+                        'timezone': data['user.time_zone']})
 
     l = []
     l2 = []
@@ -90,11 +90,8 @@ def data_frame(data):
     for url in df4.expanded_url:
 
         try:
-
-            l.append(url.split('/')[2].replace('www.',''))
-
+            l.append(url.split('/')[2].replace('www.', ''))
         except:
-
             l.append('None')
 
     df4['site_url'] = l
@@ -102,11 +99,7 @@ def data_frame(data):
     data = data_backup
 
     try:
-#
-##
-####
-##
-#
+
         df4['retweet_count'] = [count for count in data.retweet_count]
         df4['text'] = [text.encode("utf-8") for text in data.text]
 
@@ -115,28 +108,27 @@ def data_frame(data):
         df4['retweet_count'] = [tweet.retweet_count for tweet in data]
         df4['text'] = [tweet.text.encode("utf-8") for tweet in data]
 
-
-    df = pd.concat([df1,df2,df4], axis=1)
-    del df4,df1,df2,l2,l
+    df = pd.concat([df1, df2, df4], axis=1)
+    del df4, df1, df2, l2, l
 
         ### COUNTING THE LOW QUALITY SCORE
 
-    low_quality = pd.DataFrame({'default_profile' : df.default_profile == True,
-                                'egg_account' : df.egg_account == True,
+    low_quality = pd.DataFrame({'default_profile': df.default_profile == True,
+                                'egg_account': df.egg_account == True,
                                 #'no_bio_url' : df.url == "",
-                                'no_description' : df.description == "",
-                                'follows_more' : df.user_following > df.user_followers,
-                                'spam_account' : df.user_tweets > 50 * df.user_followers,
-                                'many_tweets' : df.user_tweets > 50000,
-                                'created_2016' : df.created_at.dt.year == 2016,
-                                'many_favorites' : df.user_favourites > df.user_tweets,
-                                'few_listed' : df.user_listed < df.user_followers / 100})
+                                'no_description': df.description == "",
+                                'follows_more': df.user_following > df.user_followers,
+                                'spam_account': df.user_tweets > 50 * df.user_followers,
+                                'many_tweets': df.user_tweets > 50000,
+                                'created_2016': df.created_at.dt.year == 2018,
+                                'many_favorites': df.user_favourites > df.user_tweets,
+                                'few_listed': df.user_listed < df.user_followers / 100})
 
     df4 = pd.DataFrame(10 - low_quality.sum(axis=1))
     df4.columns = ['quality_score']
-    df = pd.concat([df4,df], axis=1)
+    df = pd.concat([df4, df], axis=1)
 
-    ### COUNTING INFLUENCE SCORE
+    # COUNTING INFLUENCE SCORE
 
     df5 = pd.DataFrame((pd.to_datetime('today') - df.created_at).dt.days + 2)
     df5.columns = ['days_since_creation']
@@ -156,21 +148,12 @@ def data_frame(data):
 
     df = pd.concat([df5, df], axis=1)
 
-    ## SENTIMENT ANALYSIS MODULE
-
-    try:
-        nltk.download('vader_lexicon')
-
-    except:
-        pass
-
     sid = SentimentIntensityAnalyzer()
     l = []
-    l = [np.append(l,sid.polarity_scores(tweet).values()) for tweet in df.text]
-    df6 = pd.DataFrame(l,columns=('compound','neu','neg','pos'))
+    l = [sid.polarity_scores(tweet.decode("latin-1")).values() for tweet in df.text]
 
-    df = pd.concat([df,df6], axis=1)
-    #df = df.sort_index()
-    #df = df.sort_values('retweet_count', ascending=False)
-    del df5,df6,l
+    df6 = pd.DataFrame(l, columns=('compound', 'neu', 'neg', 'pos'))
+
+    df = pd.concat([df, df6], axis=1)
+    del df5, df6, l
     return df
