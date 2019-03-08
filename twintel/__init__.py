@@ -1,9 +1,9 @@
-from twint._methods.stream import stream
-from twint._methods.flatfile import flatfile
-from twint._methods.search import search
-from twint._methods.timeline import timeline
+from twintel._methods.stream import stream
+from twintel._methods.flatfile import flatfile
+from twintel._methods.search import search
+from twintel._methods.timeline import timeline
 
-__version__ = "1.2"
+__version__ = "1.2.1"
 
 # module level doc-string
 
