@@ -3,19 +3,20 @@
 from nltk.corpus import stopwords
 import string
 
+
 def stopword():
 
-    ### STOPWORDS MODULE 
+    # STOPWORDS MODULE
 
-    ## Here we are creating various lists of words 
-    ## in to one list 'check' which is then later
-    ## iterated against
+    # Here we are creating various lists of words
+    # in to one list 'check' which is then later
+    # iterated against
 
     nltk_stop = [stopwords.words('english')]
     punctuation_stop = list(string.punctuation)
     numeric_stop = [range(30)]
-    twitter_stop = ['RT','http','https','rt','via']
-    #keyword_stop = [keyword,keyword + '.',keyword + ',',keyword + '\'s',"#" + keyword,"#" + keyword + "."]
+    twitter_stop = ['RT', 'http', 'https', 'rt', 'via']
+    # keyword_stop = [keyword,keyword + '.',keyword + ',',keyword + '\'s',"#" + keyword,"#" + keyword + "."]
     generic_stop = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','1','2','3','4','5','6','7','8','9','0',
                      'was','are','going','used','&amp;','has','dont','amp',
                      'the','be','and','of','a','in','to','is','i','an',

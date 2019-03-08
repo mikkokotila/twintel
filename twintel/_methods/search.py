@@ -1,9 +1,3 @@
-import tweepy
-
-from twint._processing.data_frame import data_frame
-from twint._resources.keys import key
-
-
 def search(query, max_tweets=200, language='en'):
 
     '''Timeline Method
@@ -17,6 +11,11 @@ def search(query, max_tweets=200, language='en'):
 
     OUTPUT: a pandas dataframe
     '''
+
+    import tweepy
+
+    from twintel._processing.data_frame import data_frame
+    from twintel._resources.keys import key
 
     keys = key()
 

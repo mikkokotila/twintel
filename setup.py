@@ -58,6 +58,11 @@ def check_dependencies():
         import twython
     except ImportError:
         install_requires.append('twython')
+    try:
+        import aiohttp_socks
+    except ImportError:
+        install_requires.append('aiohttp_socks')
+
 
     # install_requires.append('python-tk')
 

@@ -1,11 +1,4 @@
-from tweepy import OAuthHandler
-from tweepy import Stream
-from tweepy.streaming import StreamListener
-
-from twint._resources.keys import key
-
-
-def stream(items,kind="keywords",filename=''):
+def stream(items, kind="keywords", filename=''):
 
     """
     REQUIRED INPUTS:
@@ -23,11 +16,17 @@ def stream(items,kind="keywords",filename=''):
 
     """
 
+    from tweepy import OAuthHandler
+    from tweepy import Stream
+    from tweepy.streaming import StreamListener
+
+    from twintel._resources.keys import key
+
     keys = key()
 
     if len(filename) == 0:
         filename = 'streamed_tweets.json'
-    
+
     access_token = keys['token']
     access_secret = keys['token_secret']
     consumer_secret = keys['consumer_secret']

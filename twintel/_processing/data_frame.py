@@ -99,14 +99,20 @@ def data_frame(data):
     data = data_backup
 
     try:
-
         df4['retweet_count'] = [count for count in data.retweet_count]
         df4['text'] = [text.encode("utf-8") for text in data.text]
 
     except:
 
-        df4['retweet_count'] = [tweet.retweet_count for tweet in data]
-        df4['text'] = [tweet.text.encode("utf-8") for tweet in data]
+        try:
+            df4['retweet_count'] = [tweet.retweet_count for tweet in data]
+            df4['text'] = [tweet.text.encode("utf-8") for tweet in data]
+
+        except: 
+            df4['retweet_count'] = np.nan
+            df4['text'] = [tweet.encode("utf-8") for tweet in data.full_text]
+
+
 
     df = pd.concat([df1, df2, df4], axis=1)
     del df4, df1, df2, l2, l
@@ -129,8 +135,11 @@ def data_frame(data):
     df = pd.concat([df4, df], axis=1)
 
     # COUNTING INFLUENCE SCORE
+    try:
+        df5 = pd.DataFrame((pd.to_datetime('today') - df.created_at).dt.days + 2)
+    except TypeError:
+        df5 = pd.DataFrame({'null' : [np.nan for i in range(len(df))]})
 
-    df5 = pd.DataFrame((pd.to_datetime('today') - df.created_at).dt.days + 2)
     df5.columns = ['days_since_creation']
 
     influence = pd.DataFrame({

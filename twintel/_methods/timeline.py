@@ -1,10 +1,9 @@
-import tweepy
-
-from twint._processing.data_frame import data_frame
-from twint._resources.keys import key
-
-
 def timeline(screen_name):
+
+    import tweepy
+
+    from twintel._processing.data_frame import data_frame
+    from twintel._resources.keys import key
 
     keys = key()
 
