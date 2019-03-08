@@ -9,9 +9,9 @@ __version__ = "1.2.1"
 
 __doc__ = """
 
-twint - Twitter data for signals intelligence
+twintel - Twitter data for signals intelligence
 ==============================================
-**twint** is a Python package that provides a
+**twintel** is a Python package that provides a
 very high level abstraction layer to Twitter
 API and provides the preprocessed results in a
 pandas dataframe. The system have been built with
