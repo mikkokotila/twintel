@@ -10,7 +10,7 @@ def flatfile(filename='somecode_tweets.json'):
 
     INPUT: a json file with tweet data from Twitter API
 
-    OUTPUT: a pandas dataframe with standard twint signals.
+    OUTPUT: a pandas dataframe with standard twintel signals.
 
     '''
 
