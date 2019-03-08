@@ -5,9 +5,9 @@ import os
 DESCRIPTION = "Twitter data for signals intelligence"
 LONG_DESCRIPTION = """\
 
-twint - Twitter data for signals intelligence
+twintel - Twitter data for signals intelligence
 ==============================================
-**twint** is a Python package that provides a
+**twintel** is a Python package that provides a
 very high level abstraction layer to Twitter
 API and provides the preprocessed results in a
 pandas dataframe. The system have been built with
@@ -24,12 +24,12 @@ several concerns in mind:
  - all methods return identical dataframe
 """
 
-DISTNAME = 'twint'
+DISTNAME = 'twintel'
 MAINTAINER = 'Mikko Kotila'
 MAINTAINER_EMAIL = 'mailme@mikkokotila.com'
 URL = 'http://github.com/mikkokotila'
 LICENSE = 'MIT'
-DOWNLOAD_URL = 'https://github.com/mikkokotila/twint'
+DOWNLOAD_URL = 'https://github.com/mikkokotila/twintel'
 VERSION = '1.2'
 
 try:
@@ -63,9 +63,6 @@ def check_dependencies():
     except ImportError:
         install_requires.append('aiohttp_socks')
 
-
-    # install_requires.append('python-tk')
-
     return install_requires
 
 
@@ -85,10 +82,10 @@ if __name__ == "__main__":
           version=VERSION,
           download_url=DOWNLOAD_URL,
           install_requires=install_requires,
-          packages=['twint',
-                    'twint._methods',
-                    'twint._resources',
-                    'twint._processing'],
+          packages=['twintel',
+                    'twintel._methods',
+                    'twintel._resources',
+                    'twintel._processing'],
           classifiers=[
                      'Intended Audience :: Science/Research',
                      'Programming Language :: Python :: 2.7',
