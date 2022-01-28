@@ -50,7 +50,7 @@ def search(query, max_tweets=200, language='en'):
             searched_tweets.extend(new_tweets)
             last_id = new_tweets[-1].id
 
-        except tweepy.TweepError as e:
+        except tweepy.TweepyException as e:
             break
 
     df = data_frame(searched_tweets)
