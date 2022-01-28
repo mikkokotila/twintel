@@ -30,7 +30,7 @@ MAINTAINER_EMAIL = 'mailme@mikkokotila.com'
 URL = 'http://github.com/mikkokotila'
 LICENSE = 'MIT'
 DOWNLOAD_URL = 'https://github.com/mikkokotila/twintel'
-VERSION = '1.4'
+VERSION = '1.4.1'
 
 try:
     from setuptools import setup
@@ -58,12 +58,12 @@ if __name__ == "__main__":
           url=URL,
           version=VERSION,
           download_url=DOWNLOAD_URL,
-          setup_requires=['nltk'],
           install_requires=install_requires,
           packages=['twintel',
                     'twintel._methods',
                     'twintel._resources',
                     'twintel._processing'],
+                    
           classifiers=[
                      'Intended Audience :: Science/Research',
                      'Programming Language :: Python :: 2.7',
