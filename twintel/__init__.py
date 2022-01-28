@@ -3,8 +3,6 @@ from twintel._methods.flatfile import flatfile
 from twintel._methods.search import search
 from twintel._methods.timeline import timeline
 
-__version__ = "1.4"
-
 # module level doc-string
 
 __doc__ = """
