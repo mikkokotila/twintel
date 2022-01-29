@@ -58,6 +58,7 @@ if __name__ == "__main__":
           url=URL,
           version=VERSION,
           download_url=DOWNLOAD_URL,
+          setup_requires=['nltk'],
           install_requires=install_requires,
           packages=['twintel',
                     'twintel._methods',
