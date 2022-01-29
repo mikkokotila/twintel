@@ -39,10 +39,10 @@ def search(query, max_tweets=200, language='en'):
         count = max_tweets - len(searched_tweets)
 
         try:
-            new_tweets = api.search(q=query,
-                                    count=count,
-                                    max_id=str(last_id - 1),
-                                    lang=language)
+            new_tweets = api.search_tweets(q=query,
+                                           count=count,
+                                           max_id=str(last_id - 1),
+                                           lang=language)
 
             if not new_tweets:
                 break
