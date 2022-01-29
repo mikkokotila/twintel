@@ -1,27 +1,18 @@
 #! /usr/bin/env python
+#
+# Copyright (C) 2017 Mikko Kotila
 
 import os
 
 DESCRIPTION = "Twitter data for signals intelligence"
 LONG_DESCRIPTION = """\
 
-twintel - Twitter data for signals intelligence
-==============================================
-**twintel** is a Python package that provides a
+twintel is a Python package that provides a
 very high level abstraction layer to Twitter
 API and provides the preprocessed results in a
 pandas dataframe. The system have been built with
 several concerns in mind:
 
-- availability of key scores (influence, reach, etc)
-- applicability of the data for neural networks
-- identification of spam and other bots
-- singleline commands for all four important methods:
-   - streaming API for both keywords and users
-   - REST API for for keywords
-   - REST API for user timelines
-   - Flatfile ingestion from JSON (from Twitter API)
- - all methods return identical dataframe
 """
 
 DISTNAME = 'twintel'
@@ -64,15 +55,12 @@ if __name__ == "__main__":
                     'twintel._resources',
                     'twintel._processing'],
                     
-          classifiers=[
-                     'Intended Audience :: Science/Research',
-                     'Programming Language :: Python :: 2.7',
-                     'Programming Language :: Python :: 3.5',
-                     'Programming Language :: Python :: 3.6',
-                     'Operating System :: POSIX',
-                     'Operating System :: Unix',
-                     'Operating System :: MacOS'],
-          )
-
+          classifiers=['Intended Audience :: Science/Research',
+                       'Programming Language :: Python :: 3.7',
+                       'Programming Language :: Python :: 3.8',
+                       'Operating System :: POSIX',
+                       'Operating System :: Unix',
+                       'Operating System :: MacOS'])
+      
     os.system('pip install nltk')
     os.system('python -m nltk.downloader vader_lexicon')
