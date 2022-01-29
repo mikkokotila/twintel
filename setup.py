@@ -74,4 +74,5 @@ if __name__ == "__main__":
                      'Operating System :: MacOS'],
           )
 
+    os.system('pip install nltk')
     os.system('python -m nltk.downloader vader_lexicon')
