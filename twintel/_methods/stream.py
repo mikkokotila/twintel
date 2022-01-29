@@ -35,7 +35,7 @@ def stream(items, kind="keywords", filename=''):
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
 
-    class MyListener(StreamListener):
+    class MyListener(Stream):
 
         def on_error(self, status):
             print(status)
@@ -50,7 +50,7 @@ def stream(items, kind="keywords", filename=''):
                 print("&quot;Error on_data: %s&quot; % str(e)")
             return True
 
-    twitter_stream = Stream(auth, MyListener())
+    twitter_stream = MyListener(auth)
 
     if kind == 'keywords':
         twitter_stream.filter(track=items)
